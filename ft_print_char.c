@@ -6,7 +6,7 @@
 /*   By: ztawanna <ztawanna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 17:46:10 by ztawanna          #+#    #+#             */
-/*   Updated: 2020/08/07 23:25:23 by ztawanna         ###   ########.fr       */
+/*   Updated: 2020/08/08 17:48:32 by ztawanna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int		print_char(int c, t_set *set)
 {
 	int	len;
 
+	if ((set->flags & ZERO) && !(set->flags & (PREC | MINUS)) && set->width > 0)
+	{
+		set->prec = set->width;
+		set->width = 0;
+	}
 	len = (set->width < 1) ? (1) : (set->width);
 	if (!(set->flags & MINUS))
 		ft_align(' ', set->width - 1);
